@@ -10,7 +10,7 @@ from datetime import datetime
 
 def get_farmers():
     farmers = []
-    for i in range(1):
+    for i in range(101):
         x = requests.get(f'https://hdfat7b8eg.execute-api.us-west-2.amazonaws.com/prod/community/{i + 1}').json()
         characters = x['characters']
         print(f'getting community {i + 1} farmers...')
@@ -28,7 +28,7 @@ def get_farmers():
                                 "id": farmer_effect["farmer"]["id"],
                                 "cooldownUntil": farmer_effect["farmer"]["cooldownUntil"]
                             }
-                            print(farmer)
+                            # print(farmer)
                             farmers.append(farmer)
 
     farmers = sorted(farmers, key=lambda e: e.__getitem__('cooldownUntil'), reverse=False)
