@@ -50,4 +50,4 @@ def push_to_github():
 
 if __name__ == '__main__':
     get_cooling_down_farmers()
-    # push_to_github()
+    push_to_github()
