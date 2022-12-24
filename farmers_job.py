@@ -26,11 +26,15 @@ def get_farmers():
                             print(farmer)
                             farmers.append(farmer)
 
+    farmers = sorted(farmers, key=lambda e: e.__getitem__('cooldownUntil'), reverse=False)
     with open('farmers.csv', 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile, delimiter=',')
-        csv_writer.writerow(["ID", "cooldownUntil"])
+        csv_writer.writerow(["Token ID", "Cooldown Until"])
         for farmer in farmers:
             csv_writer.writerow([farmer['id'], farmer['cooldownUntil']])
+
+
+def push_to_github():
 
 
 if __name__ == '__main__':
