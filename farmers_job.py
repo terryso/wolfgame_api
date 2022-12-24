@@ -4,6 +4,7 @@ import os
 
 import requests as requests
 import csv
+from datetime import datetime
 
 
 def get_farmers():
@@ -31,7 +32,9 @@ def get_farmers():
 
     farmers = sorted(farmers, key=lambda e: e.__getitem__('cooldownUntil'), reverse=False)
     with open('farmers.csv', 'w', newline='') as csvfile:
+        today = datetime.now()
         csv_writer = csv.writer(csvfile, delimiter=',')
+        csv_writer.writerow([f"Last Update: {today.isoformat()}"])
         csv_writer.writerow(["Token ID", "Cooldown Until"])
         for farmer in farmers:
             csv_writer.writerow([farmer['id'], farmer['cooldownUntil']])
@@ -42,5 +45,5 @@ def push_to_github():
 
 
 if __name__ == '__main__':
-    # get_farmers()
+    get_farmers()
     push_to_github()
