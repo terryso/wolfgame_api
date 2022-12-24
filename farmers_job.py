@@ -19,6 +19,9 @@ def get_farmers():
             action = c['action']
             if c_type == "SHEEP" and action:
                 a_type = action['type']
+                if a_type == 'BREEDING':
+                    print(f"breeding data: {action['data']}")
+
                 if a_type == 'COLLECTING':
                     data = action['data']
                     farmer_effects = data['farmerEffects']
