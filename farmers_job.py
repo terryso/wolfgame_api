@@ -1,4 +1,7 @@
 from __future__ import print_function
+
+import os
+
 import requests as requests
 import csv
 
@@ -35,7 +38,9 @@ def get_farmers():
 
 
 def push_to_github():
+    os.system('./push_to_github.sh')
 
 
 if __name__ == '__main__':
-    get_farmers()
+    # get_farmers()
+    push_to_github()
