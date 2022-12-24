@@ -8,7 +8,7 @@ import csv
 from datetime import datetime
 
 
-def get_farmers():
+def get_cooling_down_farmers():
     farmers = []
     for i in range(101):
         x = requests.get(f'https://hdfat7b8eg.execute-api.us-west-2.amazonaws.com/prod/community/{i + 1}').json()
@@ -49,5 +49,5 @@ def push_to_github():
 
 
 if __name__ == '__main__':
-    get_farmers()
-    push_to_github()
+    get_cooling_down_farmers()
+    # push_to_github()
