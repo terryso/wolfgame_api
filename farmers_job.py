@@ -2,6 +2,7 @@ from __future__ import print_function
 
 import os
 
+import pytz as pytz
 import requests as requests
 import csv
 from datetime import datetime
@@ -32,9 +33,9 @@ def get_farmers():
 
     farmers = sorted(farmers, key=lambda e: e.__getitem__('cooldownUntil'), reverse=False)
     with open('farmers.csv', 'w', newline='') as csvfile:
-        today = datetime.now()
+        today = datetime.now(tz=pytz.UTC)
         csv_writer = csv.writer(csvfile, delimiter=',')
-        csv_writer.writerow(["Last Update", f"{today.isoformat()}"])
+        csv_writer.writerow(["Last Update", f"{today} (UTC)"])
         csv_writer.writerow(["Token ID", "Cooldown Until"])
         for farmer in farmers:
             csv_writer.writerow([farmer['id'], farmer['cooldownUntil']])
