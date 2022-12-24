@@ -34,7 +34,7 @@ def get_farmers():
     with open('farmers.csv', 'w', newline='') as csvfile:
         today = datetime.now()
         csv_writer = csv.writer(csvfile, delimiter=',')
-        csv_writer.writerow(["", f"Last Update: {today.isoformat()}"])
+        csv_writer.writerow(["Last Update:", f"{today.isoformat()}"])
         csv_writer.writerow(["Token ID", "Cooldown Until"])
         for farmer in farmers:
             csv_writer.writerow([farmer['id'], farmer['cooldownUntil']])
