@@ -29,6 +29,7 @@ def get_cooling_down_farmers():
                         for farmer_effect in farmer_effects:
                             farmer = {
                                 "id": farmer_effect["farmer"]["id"],
+                                "effectEndsAt": farmer_effect["endsAt"],
                                 "cooldownUntil": farmer_effect["farmer"]["cooldownUntil"]
                             }
                             # print(farmer)
@@ -38,10 +39,10 @@ def get_cooling_down_farmers():
     with open('farmers.csv', 'w', newline='') as csvfile:
         today = datetime.now(tz=pytz.UTC)
         csv_writer = csv.writer(csvfile, delimiter=',')
-        csv_writer.writerow(["Last Update", f"{today} (UTC)"])
-        csv_writer.writerow(["Token ID", "Cooldown Until"])
+        csv_writer.writerow(["Last Update", f"{today} (UTC)", ""])
+        csv_writer.writerow(["Token ID", "Effect Ends At", "Cooldown Until"])
         for farmer in farmers:
-            csv_writer.writerow([farmer['id'], farmer['cooldownUntil']])
+            csv_writer.writerow([farmer['id'], farmer['effectEndsAt'], farmer['cooldownUntil']])
 
 
 def push_to_github():
