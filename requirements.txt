@@ -9,3 +9,4 @@ Werkzeug==2.2.2
 zipp==3.11.0
 requests
 Flask-Caching
+wechat=0.4.16
